@@ -1,0 +1,16 @@
+http:
+  host: "localhost"
+  port: "9001"
+grpc:
+  port: "8001"
+  timeout: "5s"
+  idle_conn_pool: "10"
+  max_conn_pool: "50"
+  user_service_host: "localhost"
+  user_service_port: "8000"
+database:
+  host: "localhost"
+  port: "5432"
+  username: "postgres"
+  password: "postgres"
+  dbname: "auth_service"
