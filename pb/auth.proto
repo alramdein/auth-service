@@ -5,10 +5,21 @@ service AuthService {
     rpc HasAccess (HassAccessRequest) returns (HasAccessResponse);
 }
 
+enum Resource {
+    ResourceUser = 0;
+}
+
+enum Action {
+    ActionCreate = 0;
+    ActionUpdate = 1;
+    ActionDelete = 2;
+    ActionView = 3;
+}
+
 message HassAccessRequest {
     int64 role_id = 1;
-    string resource = 2;
-    string action = 3;
+    Resource resource = 2;
+    Action action = 3;
 }
 
 message HasAccessResponse {
