@@ -7,7 +7,7 @@ import (
 	"github.com/alramdein/auth-service/pb"
 )
 
-func (s *Service) HasAccess(ctx context.Context, req *pb.HassAccessRequest) (res *pb.HasAccessResponse, err error) {
+func (s *Service) HasAccess(ctx context.Context, req *pb.HassAccessRequest) *pb.HasAccessResponse {
 	hasAccess := s.authUsecase.HasAccess(
 		ctx,
 		req.GetRoleId(),
@@ -15,10 +15,8 @@ func (s *Service) HasAccess(ctx context.Context, req *pb.HassAccessRequest) (res
 		model.GetAction(req.GetAction()),
 	)
 	if hasAccess != true {
-		res = &pb.HasAccessResponse{HasAccess: false}
-		return
+		return &pb.HasAccessResponse{HasAccess: false}
 	}
 
-	res = &pb.HasAccessResponse{HasAccess: true}
-	return
+	return &pb.HasAccessResponse{HasAccess: true}
 }
