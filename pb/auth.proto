@@ -1,0 +1,16 @@
+syntax = "proto3";
+option go_package= "pb/";
+
+service AuthService {
+    rpc HasAccess (HassAccessRequest) returns (HasAccessResponse);
+}
+
+message HassAccessRequest {
+    int64 role_id = 1;
+    string resource = 2;
+    string action = 3;
+}
+
+message HasAccessResponse {
+    bool has_access = 1;
+}
